@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HairCut - Hair Salon HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+   .overlay {
+  position: fixed; /* Fixed position for full screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark background */
+  display: none; /* Hidden by default */
+  z-index: 1000; /* Make sure overlay is on top of other content */
+  justify-content: center; /* Center the loader horizontally */
+  align-items: center; /* Center the loader vertically */
+  display: none; /* Enable flexbox to center content */
+}
+
+/* Custom loader style */
+.loader {
+  width: 40px;
+  height: 10px;
+  color: #766DF4;
+  background:
+    radial-gradient(farthest-side, currentColor 90%, #0000) left / 10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) center / 10px 10px,
+    radial-gradient(farthest-side, currentColor 90%, #0000) right / 10px 10px,
+    linear-gradient(currentColor 0 0) center / 100% 4px;
+  background-repeat: no-repeat;
+  position: relative;
+  animation: s6 2s infinite linear;
+}
+
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  animation: inherit;
+  --s: calc(50% - 5px);
+  animation-direction: reverse;
+}
+
+.custom-loader:after {
+  --s: calc(5px - 50%);
+}
+
+@keyframes s6 {
+  0% {
+    transform: translate(var(--s, 0)) rotate(0)
+  }
+
+  100% {
+    transform: translate(var(--s, 0)) rotate(1turn)
+  }
+}
+
+      </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="" style="color: black;" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <img class="" width="100" height="100" style = "border-radius: 15px;" src="img/meme_coin3-removebg-preview.png" alt="">
+            <!-- <h1 class="mb-0 text-primary "><i class=""></i>PsychAI</h1> -->
+        </a>
+        <div style="position: absolute; top: 30px; right: 50px;" >
+            <img class="" width="60" height="60" src="img/image.png" alt="">
+        </div>
+        <div class="collapse navbar-collapse" id="">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+            </div>
+            <!-- <a href="" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a> -->
+        </div>
+    </nav>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="bg-secondary p-5">
+                        <p class="d-inline-block bg-dark text-primary py-1 px-4">Chat with us</p>
+                        <h1 class="text-uppercase mb-4">Ask anything</h1>
+                        <!-- <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> -->
+                        
+                            <div class="row g-3">
+    
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <div id="subject" class="conversation"></div>
+                                        <!-- <textarea class="form-control bg-transparent" id="subject" readonly rows="10" cols="50" style="height: 200px"></textarea> -->
+                                    </div>
+                                </div> 
+                                <div id="loader"></div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control bg-transparent" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Enter your message here</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" id="submit" >Send Message</button>
+                                </div>
+                            </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+    <div class="overlay" id="overlay">
+        <div class="loader custom-loader" id="loader"></div> <!-- Loader in the center -->
+      </div>
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
