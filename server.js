@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Anthropic } = require('@anthropic-ai/sdk');
-
+require('dotenv').config();
+const api_Key = process.env.API_KEY;
 const app = express();
+// console.log(`api_key: ${api_Key}`)
 const anthropic = new Anthropic({
-  apiKey: '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', // Replace with your API key
+  apiKey: api_Key, // Replace with your API key
 });
 
 const doctorPrompt = `
