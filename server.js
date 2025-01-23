@@ -30,7 +30,7 @@ app.use(express.static('public')); // Serve static HTML files
 app.post('/conversation', async (req, res) => {
   console.log('inside conversation api');
   const { userInput } = req.body;
-
+  console.log(`api_key: ${api_Key}`)
   if (!userInput || userInput.trim() === '') {
     return res.status(400).json({ error: 'User input cannot be empty' });
   }
