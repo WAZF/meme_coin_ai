@@ -13,7 +13,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/public/$1"  // Serves static files from public folder
+        "dest": "/public/$1" 
       }
     ]
   }
