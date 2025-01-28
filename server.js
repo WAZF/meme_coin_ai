@@ -63,8 +63,8 @@ app.post('/conversation', async (req, res) => {
 });
 
 // Start server
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
-module.exports = app;
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+// module.exports = app;
